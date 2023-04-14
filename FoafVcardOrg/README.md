@@ -5,8 +5,7 @@
 
 <details>
 <summary>
-> Given the RDF/Turtle model below, create a SPARQL query that lists for every person the country, company and department and role.
-> Please adhere strictly to the given model.
+Given the RDF/Turtle model below, create a SPARQL query that lists for every person the country, company and department and role. Please adhere strictly to the given model.
 </summary>
 
 ```turtle
