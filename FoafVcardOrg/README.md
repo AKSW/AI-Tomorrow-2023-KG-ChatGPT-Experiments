@@ -108,7 +108,7 @@ WHERE {
 
 This query retrieves the person, their first name, surname, country, company, department, and role by matching the relevant triples in the RDF model.
 
-<details>
+</details>
 
 
 <details>
@@ -144,7 +144,7 @@ WHERE {
 
 This query retrieves the person, their first name, surname, country, company, department, and role by matching the appropriate triples in the given RDF/Turtle model. The **``OPTIONAL``** clause is used to account for role URIs that might not have a human-readable label.
 
-<details>
+</details>
 
 
 <details>
@@ -179,7 +179,7 @@ WHERE {
 
 This query will return a list of people, along with their country, company, department, and role.
 
-<details>
+</details>
 
 <details>
 <summary>Answer 5/5: &cross;</summary>
