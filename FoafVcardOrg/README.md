@@ -78,6 +78,7 @@ This query selects the required information for each person, including their fir
 
 </details>
 
+
 <details>
 <summary>Answer 2/5: &cross;</summary>
 
@@ -181,6 +182,7 @@ This query will return a list of people, along with their country, company, depa
 
 </details>
 
+
 <details>
 <summary>Answer 5/5: &cross;</summary>
 
@@ -211,10 +213,11 @@ SELECT ?person ?firstName ?surname ?country ?company ?department ?role WHERE {
   ?department org:unitOf ?company ;
               rdfs:label ?departmentLabel .
   ?membership org:organization ?department .
-}```
+}
+```
 
 This query selects the person, first name, surname, country, company, department, and role for each person based on their membership and address information in the RDF/Turtle model.
 
-<details>
+</details>
 
 
