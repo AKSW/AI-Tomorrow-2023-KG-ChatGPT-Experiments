@@ -36,7 +36,7 @@ PREFIX org: <http://www.w3.org/ns/org#>
 ```
 </details>
 
-### ChatGPT 4 ChatGPT Mar 23 Version
+### ChatGPT 4 Mar 23 Version
 
 <details>
 <summary>Answer 1/5: &check;</summary>
