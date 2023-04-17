@@ -7,7 +7,7 @@ Create relabeled data using:
 rpt integrate --out-format turtle/pretty foaf-vcard-org-data.ttl relabel-properties-and-classes.rq > relabled-data.ttl
 ```
 
-## Task 1: Connection Explanation
+## Task 1A: Connection Explanation
 
 <details>
 <summary>
@@ -100,6 +100,68 @@ So, while there isn't a direct connection between "UK" and "US" in the RDF/Turtl
 Based on the RDF/Turtle model provided, there is an indirect connection between "UK" and "US" through the shared organization, :wonderOrg.
 
 Anne, who lives in the "UK", is a member of the :researchDep, which is a part of :wonderOrg. On the other hand, Bob, who lives in the "US", is a member of the :marketingDep, also a part of :wonderOrg. While there is no direct connection between the "UK" and "US" in this model, both Anne and Bob are connected through their roles in the same organization, :wonderOrg.
+</details>
+
+
+## Task 1B
+Same as 1A but with a relabled model
+
+### ChatGPT 4 Mar 23 Version
+<details>
+<summary>Answer 1/5: &cross;</summary>
+Based on the given RDF/Turtle model, there is no explicit connection between "UK" and "US". They are only related in the sense that they are values of the property eg:prop9 for two different individuals, :anne and :bob. In the model, :anne has a connection to the "UK" and :bob has a connection to the "US". However, there is no direct connection or relationship between the "UK" and the "US" mentioned within this model.
+</details>
+
+<details>
+<summary>Answer 2/5: &check;</summary>
+In the given RDF/Turtle model, there is an indirect connection between "UK" and "US". The connection can be understood through the individuals :anne and :bob.
+
+:anne is associated with "UK" through the property eg:prop14:
+
+```turtle
+:anne a eg:class5 ; eg:prop12  "Anne" ; eg:prop13  "Miller" ;
+  eg:prop14  [ a eg:class0 ; eg:prop9  "UK" ] .
+
+:bob is associated with "US" through the property eg:prop14:
+```
+
+```turtle
+:bob a eg:class5 ; eg:prop12  "Bob" ; eg:prop13  "Tanner" ;
+  eg:prop14  [ a eg:class0 ; eg:prop9  "US" ] .
+```
+
+Both :anne and :bob are individuals of eg:class5 and are related to different departments within :wonderOrg, with :anne being related to the :researchDep and :bob being related to the :marketingDep. Although there is no direct connection between "UK" and "US", the connection is established through the individuals and their roles within the organization.
+</details>
+
+<details>
+<summary>Answer 3/5: &check;</summary>
+n the given RDF/Turtle model, the connection between "UK" and "US" can be inferred through the individuals ":anne" and ":bob", who are associated with the countries "UK" and "US" respectively through the property eg:prop9.
+
+:anne has the property eg:prop14 with the value "UK".
+:bob has the property eg:prop14 with the value "US".
+
+Although there is no direct connection between "UK" and "US" in the RDF/Turtle model, the connection can be made indirectly through the individuals ":anne" and ":bob" who belong to the same class eg:class5 and are associated with different departments within the same organization :wonderOrg.
+</details>
+
+<details>
+<summary>Answer 4/5: &check;</summary>
+Based on the RDF/Turtle model provided, there is no explicit connection between "UK" and "US". However, there is an implicit connection between "UK" and "US" in the sense that both are related to different individuals in the dataset.
+
+The individual "Anne" has a property (eg:prop14) with a value of "UK", while the individual "Bob" has the same property (eg:prop14) with a value of "US". Both Anne and Bob are instances of the same class (eg:class5) and have relationships with different departments in the organization.
+
+While there is no direct connection between "UK" and "US" in this model, the indirect connection exists through the individuals and their properties in the dataset.
+</details>
+
+<details>
+<summary>Answer 5/5: &cross;</summary>
+n the given RDF/Turtle model, there is an indirect connection between "UK" and "US" through the individuals Anne and Bob. Anne is associated with the "UK" via the property eg:prop14, and Bob is associated with the "US" via the same property.
+
+To be more specific, the connection is as follows:
+
+Anne (eg:prop14) -> UK
+Bob (eg:prop14) -> US
+
+Although the connection is not direct, both Anne and Bob are connected to their respective countries through the same property (eg:prop14), which implies a connection between "UK" and "US" in the context of this model.
 </details>
 
 
@@ -504,3 +566,269 @@ This query uses SPARQL's SELECT statement to retrieve the desired information fo
 </details>
 
 
+## Task3: Standardize Classes and Properties
+
+<details>
+<summary>Given the RDF/Turtle model below, please replace all properties and classes with the most likely standard ones.<summary>
+
+```turtle
+PREFIX eg:  <http://www.example.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX : <https://abc.def/ghi/>
+
+:anne a eg:class5 ; eg:prop12  "Anne" ; eg:prop13  "Miller" ;
+  eg:prop14  [ a eg:class0 ; eg:prop9  "UK" ] .
+:bob a eg:class5 ; eg:prop12  "Bob" ; eg:prop13  "Tanner" ;
+  eg:prop14  [ a eg:class0 ; eg:prop9  "US" ] .
+
+:wonderOrg a eg:class3 .
+:researchDep a eg:class1  ; eg:prop10 :wonderOrg ;
+  eg:prop11 "Research Department" .
+:marketingDep a eg:class1 ; eg:prop10 :wonderOrg ;
+  eg:prop11 "Marketing Department" .
+
+:chiefResearchOfficer a eg:class4 . :marketingManager a eg:class4 .
+
+[ a eg:class2 ; eg:prop6 :anne ; eg:prop7 :researchDep ;
+  eg:prop8 :chiefResearchOfficer ] .
+[ a eg:class2 ; eg:prop6 :bob  ; eg:prop7 :marketingDep ;
+  eg:prop8 :marketingManager ] .
+```
+<details>
+
+
+### ChatGPT 4 Mar 23 Version
+
+<details>
+<summary>Answer 1/5: &cross;</summary>
+Here's the RDF/Turtle model with the properties and classes replaced with more standard ones:
+
+```turtle
+PREFIX foaf: http://xmlns.com/foaf/0.1/
+PREFIX rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+PREFIX xsd: http://www.w3.org/2001/XMLSchema#
+PREFIX org: http://www.w3.org/ns/org#
+PREFIX vcard: http://www.w3.org/2006/vcard/ns#
+PREFIX : https://abc.def/ghi/
+
+:anne a foaf:Person ;
+foaf:givenName "Anne" ;
+foaf:familyName "Miller" ;
+vcard:hasAddress [ a vcard:Address ; vcard:country-name "UK" ] .
+:bob a foaf:Person ;
+foaf:givenName "Bob" ;
+foaf:familyName "Tanner" ;
+vcard:hasAddress [ a vcard:Address ; vcard:country-name "US" ] .
+
+:wonderOrg a org:Organization .
+:researchDep a org:OrganizationalUnit ;
+org:subOrganizationOf :wonderOrg ;
+foaf:name "Research Department" .
+:marketingDep a org:OrganizationalUnit ;
+org:subOrganizationOf :wonderOrg ;
+foaf:name "Marketing Department" .
+
+:chiefResearchOfficer a org:Role .
+:marketingManager a org:Role .
+
+[ a org:Membership ;
+org:member :anne ;
+org:organization :researchDep ;
+org:role :chiefResearchOfficer ] .
+[ a org:Membership ;
+org:member :bob ;
+org:organization :marketingDep ;
+org:role :marketingManager ] .
+```
+</details>
+
+
+<details>
+<summary>Answer 2/5: &cross;</summary>
+I have replaced the custom classes and properties with more standard ones from widely-used vocabularies, such as FOAF, schema.org, and Dublin Core.
+
+```turtle
+PREFIX foaf: http://xmlns.com/foaf/0.1/
+PREFIX rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+PREFIX xsd: http://www.w3.org/2001/XMLSchema#
+PREFIX schema: http://schema.org/
+PREFIX dc: http://purl.org/dc/terms/
+PREFIX : https://abc.def/ghi/
+
+:anne a foaf:Person ;
+foaf:givenName "Anne" ;
+foaf:familyName "Miller" ;
+schema:address [ a schema:PostalAddress ; schema:addressCountry "UK" ] .
+:bob a foaf:Person ;
+foaf:givenName "Bob" ;
+foaf:familyName "Tanner" ;
+schema:address [ a schema:PostalAddress ; schema:addressCountry "US" ] .
+
+:wonderOrg a schema:Organization .
+:researchDep a schema:Organization ;
+schema:parentOrganization :wonderOrg ;
+dc:title "Research Department" .
+:marketingDep a schema:Organization ;
+schema:parentOrganization :wonderOrg ;
+dc:title "Marketing Department" .
+
+:chiefResearchOfficer a schema:JobTitle .
+:marketingManager a schema:JobTitle .
+
+[ a schema:EmployeeRole ;
+schema:employee :anne ;
+schema:memberOf :researchDep ;
+schema:jobTitle :chiefResearchOfficer ] .
+[ a schema:EmployeeRole ;
+schema:employee :bob ;
+schema:memberOf :marketingDep ;
+schema:jobTitle :marketingManager ] .
+```
+<details>
+
+
+<details>
+<summary>Answer 3/5</summary>
+
+```turtle
+PREFIX eg: http://www.example.org/
+PREFIX rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+PREFIX xsd: http://www.w3.org/2001/XMLSchema#
+PREFIX : https://abc.def/ghi/
+PREFIX foaf: http://xmlns.com/foaf/0.1/
+PREFIX org: http://www.w3.org/ns/org#
+PREFIX vcard: http://www.w3.org/2006/vcard/ns#
+
+:anne a foaf:Person ;
+foaf:givenName "Anne" ;
+foaf:familyName "Miller" ;
+vcard:hasAddress [ a vcard:Address ; vcard:country-name "UK" ] .
+:bob a foaf:Person ;
+foaf:givenName "Bob" ;
+foaf:familyName "Tanner" ;
+vcard:hasAddress [ a vcard:Address ; vcard:country-name "US" ] .
+
+:wonderOrg a org:Organization .
+:researchDep a org:OrganizationalUnit ;
+org:subOrganizationOf :wonderOrg ;
+foaf:name "Research Department" .
+:marketingDep a org:OrganizationalUnit ;
+org:subOrganizationOf :wonderOrg ;
+foaf:name "Marketing Department" .
+
+:chiefResearchOfficer a org:Role .
+:marketingManager a org:Role .
+
+[ a org:Membership ;
+org:member :anne ;
+org:organization :researchDep ;
+org:role :chiefResearchOfficer ] .
+[ a org:Membership ;
+org:member :bob ;
+org:organization :marketingDep ;
+org:role :marketingManager ] .
+```
+</details>
+
+
+<details>
+<summary>Answer 4/5</summary>
+
+In order to replace the properties and classes with the most likely standard ones, I'll use the following namespaces and standard classes/properties:
+
+* foaf: http://xmlns.com/foaf/0.1/
+* vcard: http://www.w3.org/2006/vcard/ns#
+* org: http://www.w3.org/ns/org#
+
+Here's the updated RDF/Turtle model:
+
+```turtle
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX : <https://abc.def/ghi/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+:anne a foaf:Person;
+  foaf:givenName "Anne";
+  foaf:familyName "Miller";
+  vcard:hasAddress [ a vcard:Address;
+    vcard:country-name "UK" ] .
+
+:bob a foaf:Person;
+  foaf:givenName "Bob";
+  foaf:familyName "Tanner";
+  vcard:hasAddress [ a vcard:Address;
+    vcard:country-name "US" ] .
+
+:wonderOrg a org:Organization .
+
+:researchDep a org:OrganizationalUnit;
+  org:subOrganizationOf :wonderOrg;
+  foaf:name "Research Department" .
+
+:marketingDep a org:OrganizationalUnit;
+  org:subOrganizationOf :wonderOrg;
+  foaf:name "Marketing Department" .
+
+:chiefResearchOfficer a foaf:Role .
+:marketingManager a foaf:Role .
+
+[ a org:Membership;
+  org:member :anne;
+  org:organization :researchDep;
+  org:role :chiefResearchOfficer ] .
+
+[ a org:Membership;
+  org:member :bob;
+  org:organization :marketingDep;
+  org:role :marketingManager ] .
+```
+In this updated model, I have used the FOAF (Friend of a Friend) vocabulary to describe people, the vCard ontology for addressing, and the W3C Organization ontology to describe organizations, organizational units, and memberships.
+</details>
+
+
+<details>
+<summary>Answer 5/5</summary>
+Here is the RDF/Turtle model with properties and classes replaced with the most likely standard ones:
+
+```turtle
+PREFIX foaf: http://xmlns.com/foaf/0.1/
+PREFIX rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+PREFIX xsd: http://www.w3.org/2001/XMLSchema#
+PREFIX org: http://www.w3.org/ns/org#
+PREFIX vcard: http://www.w3.org/2006/vcard/ns#
+PREFIX : https://abc.def/ghi/
+
+:anne a foaf:Person ;
+foaf:givenName "Anne" ;
+foaf:familyName "Miller" ;
+vcard:hasAddress [ a vcard:Address ; vcard:country-name "UK" ] .
+:bob a foaf:Person ;
+foaf:givenName "Bob" ;
+foaf:familyName "Tanner" ;
+vcard:hasAddress [ a vcard:Address ; vcard:country-name "US" ] .
+
+:wonderOrg a org:Organization .
+:researchDep a org:FormalOrganization ;
+org:subOrganizationOf :wonderOrg ;
+foaf:name "Research Department" .
+:marketingDep a org:FormalOrganization ;
+org:subOrganizationOf :wonderOrg ;
+foaf:name "Marketing Department" .
+
+:chiefResearchOfficer a foaf:Role .
+:marketingManager a foaf:Role .
+
+[ a org:Membership ;
+org:member :anne ;
+org:organization :researchDep ;
+org:role :chiefResearchOfficer ] .
+[ a org:Membership ;
+org:member :bob ;
+org:organization :marketingDep ;
+org:role :marketingManager ] .
+```
+</details>
