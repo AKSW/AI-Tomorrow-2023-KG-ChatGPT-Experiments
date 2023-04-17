@@ -1,9 +1,17 @@
+# Tests on Mondial Knowledge Graph
+
+## Task: create SPARQL query
+
+
 Prompt:
 pease create a sparql query based on the mondial knowledgegraph for the following question:
 which river has the most riparian states?
 
-
+### ChatGPT 3.5 Mar 23 Version
 5 Answers via "regenerate" from GPT-3.5 (default)
+
+<details>
+<summary>Answer 1/5: &cross;</summary>
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX mondial: <http://www.semwebtech.org/mondial/10/schema#>
@@ -30,7 +38,10 @@ WHERE {
   }
 }
 ```
+</details>
 
+<details>
+<summary>Answer 2/5: &cross;</summary>
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX mondial: <http://www.semwebtech.org/mondial/10/schema#>
@@ -45,7 +56,10 @@ GROUP BY ?riverName
 ORDER BY DESC(?numRiparianStates)
 LIMIT 1
 ```
+</details>
 
+<details>
+<summary>Answer 3/5: &cross;</summary>
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX mondial: <http://www.semwebtech.org/mondial/10/schema#>
@@ -69,7 +83,10 @@ WHERE {
   }
 }
 ```
+</details>
 
+<details>
+<summary>Answer 4/5: &cross;</summary>
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX mondial: <http://www.semwebtech.org/mondial/10/schema#>
@@ -84,7 +101,10 @@ GROUP BY ?riverName
 ORDER BY DESC(?numRiparianStates)
 LIMIT 1
 ```
+</details>
 
+<details>
+<summary>Answer 5/5: &cross;</summary>
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX mondial: <http://www.semwebtech.org/mondial/10/schema#>
@@ -100,9 +120,15 @@ GROUP BY ?riverName
 ORDER BY DESC(?count)
 LIMIT 1
 ```
+</details>
 
 
+
+### ChatGPT 4 Mar 23 Version
 5 Answers from GPT-4 via "regenerate answer":
+
+<details>
+<summary>Answer 1/5: &cross;</summary>
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -121,7 +147,10 @@ GROUP BY ?river ?riverName
 ORDER BY DESC(?stateCount)
 LIMIT 1
 ```
+</details>
 
+<details>
+<summary>Answer 2/5: &cross;</summary>
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -139,7 +168,10 @@ GROUP BY ?riverName
 ORDER BY DESC(?stateCount)
 LIMIT 1
 ```
+</details>
 
+<details>
+<summary>Answer 3/5: &cross;</summary>
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -157,7 +189,10 @@ ORDER BY DESC(?numberOfStates)
 LIMIT 1
 
 ```
+</details>
 
+<details>
+<summary>Answer 4/5: &cross;</summary>
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -172,7 +207,10 @@ SELECT ?river (COUNT(?state) AS ?stateCount) WHERE {
 ORDER BY DESC(?stateCount)
 LIMIT 1
 ```
+</details>
 
+<details>
+<summary>Answer 5/5: &cross;</summary>
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
