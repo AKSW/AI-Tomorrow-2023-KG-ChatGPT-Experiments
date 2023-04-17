@@ -11,7 +11,7 @@ PREFIX org: <http://www.w3.org/ns/org#>
   vcard:hasAddress [ a vcard:Home ; vcard:country-name "US" ] .
 
 :wonderOrg a org:Organization .
-:researchDep a org:OrganizationalUnit ; org:unitOf :wonderOrg ;
+:researchDep a org:OrganizationalUnit  ; org:unitOf :wonderOrg ;
   rdfs:label "Research Department" .
 :marketingDep a org:OrganizationalUnit ; org:unitOf :wonderOrg ;
   rdfs:label "Marketing Department" .
