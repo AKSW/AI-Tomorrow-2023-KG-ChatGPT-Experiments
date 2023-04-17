@@ -134,9 +134,8 @@ Anne, who lives in the "UK", is a member of the :researchDep, which is a part of
 Same as 1A but with a relabled model.
 
 <details>
-<summary>
-Given the RDF/Turtle model below, is there any connection between "UK" and "US"?
-</summary>
+<summary>Given the RDF/Turtle model below, is there any connection between "UK" and "US"?</summary>
+
 ```turtle
 PREFIX eg:  <http://www.example.org/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -160,8 +159,8 @@ PREFIX : <https://abc.def/ghi/>
   eg:prop8 :chiefResearchOfficer ] .
 [ a eg:class2 ; eg:prop6 :bob  ; eg:prop7 :marketingDep ;
   eg:prop8 :marketingManager ] .
-
 ```
+
 </details>
 
 
@@ -228,8 +227,7 @@ Although the connection is not direct, both Anne and Bob are connected to their 
 ## Task 2
 
 <details>
-<summary>Given the RDF/Turtle model below, create a SPARQL query that lists for every person the country, company and department and role. Please adhere strictly to the given model.
-</summary>
+<summary>Given the RDF/Turtle model below, create a SPARQL query that lists for every person the country, company and department and role. Please adhere strictly to the given model.</summary>
 
 ```turtle
 PREFIX : <https://abc.def/ghi/>
@@ -257,6 +255,7 @@ PREFIX org: <http://www.w3.org/ns/org#>
 [ a org:Membership ; org:member :bob  ; org:organization :marketingDep ;
   org:role :marketingManager ] .
 ```
+
 </details>
 
 ### ChatGPT 4 Mar 23 Version
