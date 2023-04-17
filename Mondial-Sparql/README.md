@@ -2,7 +2,6 @@
 
 ## Task: create SPARQL query
 
-
 Prompt:
 pease create a sparql query based on the mondial knowledgegraph for the following question:
 which river has the most riparian states?
@@ -12,7 +11,8 @@ which river has the most riparian states?
 
 <details>
 <summary>Answer 1/5: &cross;</summary>
-```
+
+```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX mondial: <http://www.semwebtech.org/mondial/10/schema#>
 
@@ -42,7 +42,8 @@ WHERE {
 
 <details>
 <summary>Answer 2/5: &cross;</summary>
-```
+
+```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX mondial: <http://www.semwebtech.org/mondial/10/schema#>
 
@@ -60,7 +61,8 @@ LIMIT 1
 
 <details>
 <summary>Answer 3/5: &cross;</summary>
-```
+
+```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX mondial: <http://www.semwebtech.org/mondial/10/schema#>
 
@@ -87,7 +89,8 @@ WHERE {
 
 <details>
 <summary>Answer 4/5: &cross;</summary>
-```
+
+```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX mondial: <http://www.semwebtech.org/mondial/10/schema#>
 
@@ -105,7 +108,8 @@ LIMIT 1
 
 <details>
 <summary>Answer 5/5: &cross;</summary>
-```
+
+```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX mondial: <http://www.semwebtech.org/mondial/10/schema#>
 
@@ -129,7 +133,8 @@ LIMIT 1
 
 <details>
 <summary>Answer 1/5: &cross;</summary>
-```
+
+```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -151,7 +156,8 @@ LIMIT 1
 
 <details>
 <summary>Answer 2/5: &cross;</summary>
-```
+
+```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX geo: <http://telegraphis.net/ontology/geography/geography#>
@@ -172,7 +178,8 @@ LIMIT 1
 
 <details>
 <summary>Answer 3/5: &cross;</summary>
-```
+
+```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX geo: <http://www.telegraphis.net/ontology/geography/geography#>
@@ -193,7 +200,8 @@ LIMIT 1
 
 <details>
 <summary>Answer 4/5: &cross;</summary>
-```
+
+```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX geo: <http://www.telegraphis.net/ontology/geography/geography#>
@@ -211,7 +219,8 @@ LIMIT 1
 
 <details>
 <summary>Answer 5/5: &cross;</summary>
-```
+
+```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
