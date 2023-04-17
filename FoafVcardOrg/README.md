@@ -627,7 +627,7 @@ This query uses SPARQL's SELECT statement to retrieve the desired information fo
 ## Task3: Standardize Classes and Properties
 
 <details>
-<summary>Given the RDF/Turtle model below, please replace all properties and classes with the most likely standard ones.<summary>
+<summary>Given the RDF/Turtle model below, please replace all properties and classes with the most likely standard ones.</summary>
 
 ```turtle
 PREFIX eg:  <http://www.example.org/>
@@ -653,13 +653,16 @@ PREFIX : <https://abc.def/ghi/>
 [ a eg:class2 ; eg:prop6 :bob  ; eg:prop7 :marketingDep ;
   eg:prop8 :marketingManager ] .
 ```
+
 </details>
 
 
 ### ChatGPT 4 Mar 23 Version
 
+**TODO** Need some degree of correctness - syntactically correct, use of all correct vocabs, use of plausible properties.
+
 <details>
-<summary>Answer 1/5: &cross;</summary>
+<summary>Answer 1/5: &cross; &cross; &cross; Overall very good; use of foaf:name for departments suboptimal</summary>
 Here's the RDF/Turtle model with the properties and classes replaced with more standard ones:
 
 ```turtle
@@ -699,6 +702,7 @@ org:member :bob ;
 org:organization :marketingDep ;
 org:role :marketingManager ] .
 ```
+
 </details>
 
 
@@ -747,7 +751,7 @@ schema:jobTitle :marketingManager ] .
 
 
 <details>
-<summary>Answer 3/5</summary>
+<summary>Answer 3/5: &cross;</summary>
 
 ```turtle
 PREFIX eg: http://www.example.org/
@@ -786,12 +790,13 @@ org:role :chiefResearchOfficer ] .
 org:member :bob ;
 org:organization :marketingDep ;
 org:role :marketingManager ] .
+
 ```
 </details>
 
 
 <details>
-<summary>Answer 4/5</summary>
+<summary>Answer 4/5: &cross;</summary>
 
 In order to replace the properties and classes with the most likely standard ones, I'll use the following namespaces and standard classes/properties:
 
@@ -843,13 +848,14 @@ PREFIX org: <http://www.w3.org/ns/org#>
   org:member :bob;
   org:organization :marketingDep;
   org:role :marketingManager ] .
+
 ```
 In this updated model, I have used the FOAF (Friend of a Friend) vocabulary to describe people, the vCard ontology for addressing, and the W3C Organization ontology to describe organizations, organizational units, and memberships.
 </details>
 
 
 <details>
-<summary>Answer 5/5</summary>
+<summary>Answer 5/5: &cross;</summary>
 Here is the RDF/Turtle model with properties and classes replaced with the most likely standard ones:
 
 ```turtle
@@ -888,5 +894,162 @@ org:role :chiefResearchOfficer ] .
 org:member :bob ;
 org:organization :marketingDep ;
 org:role :marketingManager ] .
+
 ```
+
+</details>
+
+
+### ChatGPT 3.5 Mar 23 Version
+
+
+<details>
+<summary>Answer 1/5: &check; Foaf and Org ontology not used, but still a plausible best effort result</summary>
+
+```turtle
+PREFIX eg: http://www.example.org/
+PREFIX rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+PREFIX xsd: http://www.w3.org/2001/XMLSchema#
+PREFIX : https://abc.def/ghi/
+
+:anne a eg:Person ; eg:firstName "Anne" ; eg:lastName "Miller" ;
+eg:location [ a eg:Country ; eg:countryName "UK" ] .
+:bob a eg:Person ; eg:firstName "Bob" ; eg:lastName "Tanner" ;
+eg:location [ a eg:Country ; eg:countryName "US" ] .
+
+:wonderOrg a eg:Organization .
+:researchDep a eg:Department ; eg:belongsTo :wonderOrg ;
+eg:departmentName "Research Department" .
+:marketingDep a eg:Department ; eg:belongsTo :wonderOrg ;
+eg:departmentName "Marketing Department" .
+
+:chiefResearchOfficer a eg:Employee . :marketingManager a eg:Employee .
+
+[ a eg:JobRole ; eg:employee :anne ; eg:department :researchDep ;
+eg:supervisor :chiefResearchOfficer ] .
+[ a eg:JobRole ; eg:employee :bob ; eg:department :marketingDep ;
+eg:supervisor :marketingManager ] .
+```
+
+</details>
+
+<details>
+<summary>Answer 2/5: &check; Foaf and Org ontology not used, but still a plausible best effort result</summary>
+
+```turtle
+PREFIX eg: http://www.example.org/
+PREFIX rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+PREFIX xsd: http://www.w3.org/2001/XMLSchema#
+PREFIX : https://abc.def/ghi/
+
+:anne rdf:type eg:Person ; eg:firstName "Anne" ; eg:lastName "Miller" ;
+eg:location [ rdf:type eg:Country ; eg:countryName "UK" ] .
+:bob rdf:type eg:Person ; eg:firstName "Bob" ; eg:lastName "Tanner" ;
+eg:location [ rdf:type eg:Country ; eg:countryName "US" ] .
+
+:wonderOrg rdf:type eg:Organization .
+:researchDep rdf:type eg:Department ; eg:belongsTo :wonderOrg ;
+eg:departmentName "Research Department" .
+:marketingDep rdf:type eg:Department ; eg:belongsTo :wonderOrg ;
+eg:departmentName "Marketing Department" .
+
+:chiefResearchOfficer rdf:type eg:Executive .
+:marketingManager rdf:type eg:Executive .
+
+[ rdf:type eg:Employment ; eg:employee :anne ; eg:department :researchDep ;
+eg:position :chiefResearchOfficer ] .
+[ rdf:type eg:Employment ; eg:employee :bob ; eg:department :marketingDep ;
+eg:position :marketingManager ] .
+```
+
+</details>
+
+<details>
+<summary>Answer 3/5: &cross; Several classes and properties not replaced.</summary>
+
+```turtle
+PREFIX eg: http://www.example.org/
+PREFIX rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+PREFIX xsd: http://www.w3.org/2001/XMLSchema#
+PREFIX : https://abc.def/ghi/
+
+:anne a rdf:Class5 ; eg:prop12 "Anne" ; eg:prop13 "Miller" ;
+eg:prop14 [ a rdf:Class0 ; eg:prop9 "UK" ] .
+:bob a rdf:Class5 ; eg:prop12 "Bob" ; eg:prop13 "Tanner" ;
+eg:prop14 [ a rdf:Class0 ; eg:prop9 "US" ] .
+
+:wonderOrg a rdf:Class3 .
+:researchDep a rdf:Class1 ; eg:prop10 :wonderOrg ;
+eg:prop11 "Research Department" .
+:marketingDep a rdf:Class1 ; eg:prop10 :wonderOrg ;
+eg:prop11 "Marketing Department" .
+
+:chiefResearchOfficer a rdf:Class4 . :marketingManager a rdf:Class4 .
+
+[ a rdf:Class2 ; eg:prop6 :anne ; eg:prop7 :researchDep ;
+eg:prop8 :chiefResearchOfficer ] .
+[ a rdf:Class2 ; eg:prop6 :bob ; eg:prop7 :marketingDep ;
+eg:prop8 :marketingManager ] .
+```
+
+</details>
+
+<details>
+<summary>Answer 4/5: &cross; Several classes and properties not replaced.</summary>
+
+```turtle
+PREFIX eg: http://www.example.org/
+PREFIX rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+PREFIX xsd: http://www.w3.org/2001/XMLSchema#
+PREFIX : https://abc.def/ghi/
+
+:anne a rdf:Class5 ; eg:prop12 "Anne" ; eg:prop13 "Miller" ;
+eg:prop14 [ a rdf:Class0 ; eg:prop9 "UK" ] .
+:bob a rdf:Class5 ; eg:prop12 "Bob" ; eg:prop13 "Tanner" ;
+eg:prop14 [ a rdf:Class0 ; eg:prop9 "US" ] .
+
+:wonderOrg a rdf:Class3 .
+:researchDep a rdf:Class1 ; eg:prop10 :wonderOrg ;
+eg:prop11 "Research Department" .
+:marketingDep a rdf:Class1 ; eg:prop10 :wonderOrg ;
+eg:prop11 "Marketing Department" .
+
+:chiefResearchOfficer a rdf:Class4 . :marketingManager a rdf:Class4 .
+
+[ a rdf:Class2 ; eg:prop6 :anne ; eg:prop7 :researchDep ;
+eg:prop8 :chiefResearchOfficer ] .
+[ a rdf:Class2 ; eg:prop6 :bob ; eg:prop7 :marketingDep ;
+eg:prop8 :marketingManager ] .
+```
+
+</details>
+
+<details>
+<summary>Answer 5/5: &cross; Several classes and properties not replaced.</summary>
+
+```turtle
+PREFIX eg: http://www.example.org/
+PREFIX rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+PREFIX xsd: http://www.w3.org/2001/XMLSchema#
+PREFIX : https://abc.def/ghi/
+
+:anne a rdf:Class5 ; eg:prop12 "Anne" ; eg:prop13 "Miller" ;
+eg:prop14 [ a rdf:Class0 ; eg:prop9 "UK" ] .
+:bob a rdf:Class5 ; eg:prop12 "Bob" ; eg:prop13 "Tanner" ;
+eg:prop14 [ a rdf:Class0 ; eg:prop9 "US" ] .
+
+:wonderOrg a rdf:Class3 .
+:researchDep a rdf:Class1 ; eg:prop10 :wonderOrg ;
+eg:prop11 "Research Department" .
+:marketingDep a rdf:Class1 ; eg:prop10 :wonderOrg ;
+eg:prop11 "Marketing Department" .
+
+:chiefResearchOfficer a rdf:Class4 . :marketingManager a rdf:Class4 .
+
+[ a rdf:Class2 ; eg:prop6 :anne ; eg:prop7 :researchDep ;
+eg:prop8 :chiefResearchOfficer ] .
+[ a rdf:Class2 ; eg:prop6 :bob ; eg:prop7 :marketingDep ;
+eg:prop8 :marketingManager ] .
+```
+
 </details>
