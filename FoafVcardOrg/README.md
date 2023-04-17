@@ -4,8 +4,9 @@
 
 Create relabeled data using:
 ```
-rpt integrate --out-format turtle/pretty foaf-vcard-org-data.ttl relabel-properties-and-classes.rq > relabled-data.ttl
+rpt integrate --out-format turtle/pretty foaf-vcard-org-data.ttl relabel-properties-and-classes.rq > raw-relabled-data.ttl
 ```
+The final file has been manually formatted.
 
 ## Task 1A: Connection Explanation
 
@@ -13,6 +14,32 @@ rpt integrate --out-format turtle/pretty foaf-vcard-org-data.ttl relabel-propert
 <summary>
 Given the RDF/Turtle model below, is there any connection between "UK" and "US"?
 </summary>
+```turtle
+PREFIX : <https://abc.def/ghi/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+:anne a foaf:Person ; foaf:firstName "Anne" ; foaf:surname "Miller" ;
+  vcard:hasAddress [ a vcard:Home ; vcard:country-name "UK" ] .
+:bob a foaf:Person ; foaf:firstName "Bob" ; foaf:surname "Tanner" ;
+  vcard:hasAddress [ a vcard:Home ; vcard:country-name "US" ] .
+
+:wonderOrg a org:Organization .
+:researchDep a org:OrganizationalUnit ; org:unitOf :wonderOrg ;
+  rdfs:label "Research Department" .
+:marketingDep a org:OrganizationalUnit ; org:unitOf :wonderOrg ;
+  rdfs:label "Marketing Department" .
+
+:chiefResearchOfficer a org:Role . :marketingManager a org:Role .
+
+[ a org:Membership ; org:member :anne ; org:organization :researchDep ;
+  org:role :chiefResearchOfficer ] .
+[ a org:Membership ; org:member :bob  ; org:organization :marketingDep ;
+  org:role :marketingManager ] .
+```
 </details>
 
 **Note: An answer is considered only correct if it mentions that the people are part of the same organization :wonderOrg.**
@@ -104,7 +131,40 @@ Anne, who lives in the "UK", is a member of the :researchDep, which is a part of
 
 
 ## Task 1B
-Same as 1A but with a relabled model
+Same as 1A but with a relabled model.
+
+<details>
+<summary>
+Given the RDF/Turtle model below, is there any connection between "UK" and "US"?
+</summary>
+```turtle
+PREFIX eg:  <http://www.example.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX : <https://abc.def/ghi/>
+
+:anne a eg:class5 ; eg:prop12  "Anne" ; eg:prop13  "Miller" ;
+  eg:prop14  [ a eg:class0 ; eg:prop9  "UK" ] .
+:bob a eg:class5 ; eg:prop12  "Bob" ; eg:prop13  "Tanner" ;
+  eg:prop14  [ a eg:class0 ; eg:prop9  "US" ] .
+
+:wonderOrg a eg:class3 .
+:researchDep a eg:class1  ; eg:prop10 :wonderOrg ;
+  eg:prop11 "Research Department" .
+:marketingDep a eg:class1 ; eg:prop10 :wonderOrg ;
+  eg:prop11 "Marketing Department" .
+
+:chiefResearchOfficer a eg:class4 . :marketingManager a eg:class4 .
+
+[ a eg:class2 ; eg:prop6 :anne ; eg:prop7 :researchDep ;
+  eg:prop8 :chiefResearchOfficer ] .
+[ a eg:class2 ; eg:prop6 :bob  ; eg:prop7 :marketingDep ;
+  eg:prop8 :marketingManager ] .
+
+```
+</details>
+
+
 
 ### ChatGPT 4 Mar 23 Version
 <details>
@@ -168,8 +228,7 @@ Although the connection is not direct, both Anne and Bob are connected to their 
 ## Task 2
 
 <details>
-<summary>
-Given the RDF/Turtle model below, create a SPARQL query that lists for every person the country, company and department and role. Please adhere strictly to the given model.
+<summary>Given the RDF/Turtle model below, create a SPARQL query that lists for every person the country, company and department and role. Please adhere strictly to the given model.
 </summary>
 
 ```turtle
