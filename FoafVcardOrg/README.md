@@ -662,7 +662,7 @@ PREFIX : <https://abc.def/ghi/>
 **TODO** Need some degree of correctness - syntactically correct, use of all correct vocabs, use of plausible properties.
 
 <details>
-<summary>Answer 1/5: &cross; &cross; &cross; Overall very good; use of foaf:name for departments suboptimal</summary>
+<summary>Answer 1/5: &check; &check; &check; Overall very good; use of foaf:name for departments suboptimal</summary>
 Here's the RDF/Turtle model with the properties and classes replaced with more standard ones:
 
 ```turtle
@@ -707,7 +707,7 @@ org:role :marketingManager ] .
 
 
 <details>
-<summary>Answer 2/5: &cross;</summary>
+<summary>Answer 2/5: &check;</summary>
 I have replaced the custom classes and properties with more standard ones from widely-used vocabularies, such as FOAF, schema.org, and Dublin Core.
 
 ```turtle
@@ -751,7 +751,7 @@ schema:jobTitle :marketingManager ] .
 
 
 <details>
-<summary>Answer 3/5: &cross;</summary>
+<summary>Answer 3/5: &check;</summary>
 
 ```turtle
 PREFIX eg: http://www.example.org/
@@ -796,7 +796,7 @@ org:role :marketingManager ] .
 
 
 <details>
-<summary>Answer 4/5: &cross;</summary>
+<summary>Answer 4/5: &check;</summary>
 
 In order to replace the properties and classes with the most likely standard ones, I'll use the following namespaces and standard classes/properties:
 
@@ -855,7 +855,7 @@ In this updated model, I have used the FOAF (Friend of a Friend) vocabulary to d
 
 
 <details>
-<summary>Answer 5/5: &cross;</summary>
+<summary>Answer 5/5: &check;</summary>
 Here is the RDF/Turtle model with properties and classes replaced with the most likely standard ones:
 
 ```turtle
