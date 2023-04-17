@@ -2,9 +2,32 @@
 
 ## Task: create SPARQL query
 
-Prompt:
+
+### Prompt:
+```
 pease create a sparql query based on the mondial knowledgegraph for the following question:
 which river has the most riparian states?
+```
+
+<details>
+<summary>best practice solution</summary>
+
+```SPARQL
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix mondial: <http://www.semwebtech.org/mondial/10/meta#>
+
+SELECT ?river (COUNT(?country) AS ?count)
+WHERE {
+  ?river rdf:type mondial:River .
+  ?river mondial:locatedIn ?country .
+  ?country rdf:type mondial:Country .
+}
+GROUP BY ?river
+ORDER BY DESC(?count)
+LIMIT 1
+```
+</details>
+
 
 ### ChatGPT 3.5 Mar 23 Version
 5 Answers via "regenerate" from GPT-3.5 (default)
@@ -38,6 +61,16 @@ WHERE {
   }
 }
 ```
+
+#### comments on 1/5
+* &check; syntax correct
+* &check; query is readable
+* &cross; query structure with unnecessary complexity: usage of subquery, binding for `?source` and `?sourceCountry` never used
+* &cross; wrong mondial namespace, correct would be http://www.semwebtech.org/mondial/10/meta#
+* &cross; wrong usage of property `mondial:flowsThrough` (country does not fit to range `mondial:Lake`, better would be `mondial:locatedIn`
+* &cross; undefined property used: `mondial:hasRiparianState`, `mondial:hasMouth` and `mondial:hasRiparianState` are not defined
+* result: &emptyset;
+
 </details>
 
 <details>
@@ -57,6 +90,15 @@ GROUP BY ?riverName
 ORDER BY DESC(?numRiparianStates)
 LIMIT 1
 ```
+
+#### comments on 2/5
+* &check; syntax correct
+* &check; query is readable
+* &check; good query structure
+* &cross; wrong mondial namespace, correct would be http://www.semwebtech.org/mondial/10/meta#
+* &cross; wrong usage of property `mondial:flowsThrough` (country does not fit to range `mondial:Lake`, better would be `mondial:locatedIn`
+* &check; usage of defined properties & classes
+* result: &emptyset;
 </details>
 
 <details>
@@ -85,6 +127,15 @@ WHERE {
   }
 }
 ```
+
+#### comments for 3/5
+* &check; syntax correct
+* &check; query is readable
+* &cross; query structure with unnecessary complexity: strange usage of subquery, duplicate connection between river and country via `mondial:flowsThrough` and `mondial:isRiparian`
+* &cross; wrong mondial namespace, correct would be http://www.semwebtech.org/mondial/10/meta#
+* &cross; wrong usage of property `mondial:flowsThrough` (country does not fit to range `mondial:Lake`, better would be `mondial:locatedIn`
+* &cross; undefined property used: `mondial:isRiparian` is not defined
+* result: &emptyset;
 </details>
 
 <details>
@@ -104,6 +155,15 @@ GROUP BY ?riverName
 ORDER BY DESC(?numRiparianStates)
 LIMIT 1
 ```
+
+#### comments for 4/5
+* &check; syntax correct
+* &check; query is readable
+* &cross; bad query structure with unbound `?riverName`
+* &cross; wrong mondial namespace, correct would be http://www.semwebtech.org/mondial/10/meta#
+* &cross; wrong usage of property `mondial:flowsThrough` (state does not fit to range `mondial:Lake`, better would be `mondial:locatedIn`
+* &cross; undefined class used: `mondial:State` is not defined, better would be `mondial:Country`
+* result: &emptyset;
 </details>
 
 <details>
@@ -124,6 +184,15 @@ GROUP BY ?riverName
 ORDER BY DESC(?count)
 LIMIT 1
 ```
+
+#### comments for 5/5
+* &check; syntax correct
+* &check; query is readable
+* &check; good query structure, but duplicate connection between `?river` and `?country`
+* &cross; wrong mondial namespace, correct would be http://www.semwebtech.org/mondial/10/meta#
+* &cross; wrong usage of property `mondial:flowsThrough` (country does not fit to range `mondial:Lake`, better would be `mondial:locatedIn`
+* &cross; undefined property used: `mondial:isRiparian` is not defined
+* result: &emptyset;
 </details>
 
 
@@ -152,6 +221,15 @@ GROUP BY ?river ?riverName
 ORDER BY DESC(?stateCount)
 LIMIT 1
 ```
+
+#### comments for 1/5
+* &check; syntax correct
+* &check; query is readable
+* &check; good query structure, but prefix `xsd` never used
+* &check; correct mondial namespace
+* &cross; wrong usage of property `rdfs:label` for river, mondial uses (untypically) `mondial:name`
+* &cross; undefined class used: `mondial:State` is not defined
+* result: &emptyset;
 </details>
 
 <details>
@@ -174,6 +252,13 @@ GROUP BY ?riverName
 ORDER BY DESC(?stateCount)
 LIMIT 1
 ```
+
+#### comments for 2/5
+* &check; syntax correct
+* &check; query is readable
+* &cross; query structure not based on mondial knowledge graph
+* ? mondial namespace not used
+* result: &emptyset;
 </details>
 
 <details>
@@ -196,6 +281,15 @@ ORDER BY DESC(?numberOfStates)
 LIMIT 1
 
 ```
+
+#### comments for 3/5
+* &check; syntax correct
+* &check; query is readable
+* &check; good query structure, type of `?state` not defined
+* &cross; wrong mondial namespace, correct would be http://www.semwebtech.org/mondial/10/meta#
+* &cross; wrong usage of property `rdfs:label` for river, mondial uses (untypically) `mondial:name`
+* &check; usage of defined properties & classes
+* result: &emptyset;
 </details>
 
 <details>
@@ -215,6 +309,15 @@ SELECT ?river (COUNT(?state) AS ?stateCount) WHERE {
 ORDER BY DESC(?stateCount)
 LIMIT 1
 ```
+
+#### comments for 4/5
+* &check; syntax correct
+* &check; query is readable
+* &check; good query structure, but prefix `geo` never used
+* &cross; wrong mondial namespace, correct would be http://www.semwebtech.org/mondial/10/meta#
+* &cross; wrong usage of property `mondial:flowsThrough` (country does not fit to range `mondial:Lake`, better would be `mondial:locatedIn`
+* &check; usage of defined properties & classes
+* result: &emptyset;
 </details>
 
 <details>
@@ -236,5 +339,13 @@ WHERE {
 GROUP BY ?river ?riverName
 ORDER BY DESC(?numStates)
 LIMIT 1
-
 ```
+
+#### comments for 5/5
+* &check; syntax correct
+* &check; query is readable
+* &check; good query structure, but prefix `xsd` never used
+* &cross; wrong mondial namespace, correct would be http://www.semwebtech.org/mondial/10/meta#
+* &cross; wrong usage of property `mondial:flowsThrough` (country does not fit to range `mondial:Lake`, better would be `mondial:locatedIn`
+* &check; usage of defined properties & classes
+* result: &emptyset;
