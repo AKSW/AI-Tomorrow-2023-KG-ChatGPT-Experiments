@@ -595,7 +595,7 @@ PREFIX : <https://abc.def/ghi/>
 [ a eg:class2 ; eg:prop6 :bob  ; eg:prop7 :marketingDep ;
   eg:prop8 :marketingManager ] .
 ```
-<details>
+</details>
 
 
 ### ChatGPT 4 Mar 23 Version
@@ -685,7 +685,7 @@ schema:employee :bob ;
 schema:memberOf :marketingDep ;
 schema:jobTitle :marketingManager ] .
 ```
-<details>
+</details>
 
 
 <details>
