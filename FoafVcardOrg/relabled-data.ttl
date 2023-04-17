@@ -1,0 +1,50 @@
+@prefix eg:  <http://www.example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://abc.def/ghi/researchDep>
+        rdf:type   eg:class1 ;
+        eg:prop10  <https://abc.def/ghi/wonderOrg> ;
+        eg:prop11  "Research Department" .
+
+[ rdf:type  eg:class2 ;
+  eg:prop6  <https://abc.def/ghi/anne> ;
+  eg:prop7  <https://abc.def/ghi/researchDep> ;
+  eg:prop8  <https://abc.def/ghi/chiefResearchOfficer>
+] .
+
+<https://abc.def/ghi/wonderOrg>
+        rdf:type  eg:class3 .
+
+[ rdf:type  eg:class2 ;
+  eg:prop6  <https://abc.def/ghi/bob> ;
+  eg:prop7  <https://abc.def/ghi/marketingDep> ;
+  eg:prop8  <https://abc.def/ghi/marketingManager>
+] .
+
+<https://abc.def/ghi/chiefResearchOfficer>
+        rdf:type  eg:class4 .
+
+<https://abc.def/ghi/bob>
+        rdf:type   eg:class5 ;
+        eg:prop12  "Bob" ;
+        eg:prop13  "Tanner" ;
+        eg:prop14  [ rdf:type  eg:class0 ;
+                     eg:prop9  "US"
+                   ] .
+
+<https://abc.def/ghi/anne>
+        rdf:type   eg:class5 ;
+        eg:prop12  "Anne" ;
+        eg:prop13  "Miller" ;
+        eg:prop14  [ rdf:type  eg:class0 ;
+                     eg:prop9  "UK"
+                   ] .
+
+<https://abc.def/ghi/marketingManager>
+        rdf:type  eg:class4 .
+
+<https://abc.def/ghi/marketingDep>
+        rdf:type   eg:class1 ;
+        eg:prop10  <https://abc.def/ghi/wonderOrg> ;
+        eg:prop11  "Marketing Department" .

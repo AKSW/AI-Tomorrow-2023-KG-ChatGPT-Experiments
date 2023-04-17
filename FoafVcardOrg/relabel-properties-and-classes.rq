@@ -1,0 +1,25 @@
+# Query to re-label all classes and properties with sequentially numbered IRIs
+# e.g. foo a foaf:Person becomes foo a eg:class1
+
+PREFIX sys: <http://jsa.aksw.org/fn/sys/>
+PREFIX norse: <https://w3id.org/aksw/norse#>
+PREFIX eg: <http://www.example.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+CONSTRUCT { ?s ?p ?o }
+{
+    {
+      BIND(norse:fn.of(?x, IRI(CONCAT(STR(eg:class), STR(sys:nextLong())))) AS ?fn)
+      ?s a ?t
+      BIND(rdf:type as ?p)
+      BIND(norse:map.computeIfAbsent('myMap', ?t, ?fn) AS ?o)
+    }
+  UNION
+    {
+      BIND(norse:fn.of(?x, IRI(CONCAT(STR(eg:prop), STR(sys:nextLong())))) AS ?fn)
+      ?s ?pp ?o
+      FILTER(?pp != rdf:type)
+      # BIND(IF(isLiteral(?oo), ?oo, norse:map.computeIfAbsent('myMap', ?oo, ?fn)) AS ?o)
+      BIND(norse:map.computeIfAbsent('myMap', ?pp, ?fn) AS ?p)
+    }
+}
+

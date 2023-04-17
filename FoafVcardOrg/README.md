@@ -1,7 +1,98 @@
 # Foaf + Vcard + Org Ontologies
 
+## Notes
 
-## Task 1
+Create relabeled data using:
+```
+rpt integrate --out-format turtle/pretty foaf-vcard-org-data.ttl relabel-properties-and-classes.rq > relabled-data.ttl
+```
+
+## Task 1: Connection Explanation
+
+### ChatGPT 3.5 Mar 23 Version
+
+<details>
+<summary>
+Given the RDF/Turtle model below, is there any connection between "UK" and "US"?
+</summary>
+</details>
+
+
+<details>
+<summary>Answer 1/5</summary>
+Yes, there is a connection between "UK" and "US" in the RDF/Turtle model provided. The connection is established through the properties vcard:country-name and org:Membership:
+
+1. In the RDF statement :anne vcard:hasAddress [ a vcard:Home ; vcard:country-name "UK" ] ., it is stated that Anne (identified by :anne) has a home address in the UK.
+2. In the RDF statement :bob vcard:hasAddress [ a vcard:Home ; vcard:country-name "US" ] ., it is stated that Bob (identified by :bob) has a home address in the US.
+3. In the RDF statement [ a org:Membership ; org:member :anne ; org:organization :researchDep ; org:role :chiefResearchOfficer ] ., it is stated that Anne (identified by :anne) is a member of the research department (identified by :researchDep) and holds the role of chief research officer (identified by :chiefResearchOfficer).
+4. In the RDF statement [ a org:Membership ; org:member :bob ; org:organization :marketingDep ; org:role :marketingManager ] ., it is stated that Bob (identified by :bob) is a member of the marketing department (identified by :marketingDep) and holds the role of marketing manager (identified by :marketingManager).
+
+So, the connection between "UK" and "US" is indirectly established through the membership of Anne and Bob in the research department and marketing department respectively, as indicated by the org:organization property in the org:Membership statements.
+</details>
+
+
+<details>
+<summary>Answer 2/5</summary>
+Yes, there is a connection between "UK" and "US" in the RDF/Turtle model provided. The connection is through the vCard ontology, which represents contact information, including addresses, in RDF. Both Anne and Bob are individuals represented as foaf:Person, and they both have addresses represented using vcard:hasAddress property. Anne's address has the country name "UK", while Bob's address has the country name "US". This indicates that Anne's address is in the United Kingdom and Bob's address is in the United States.
+</details>
+
+
+<details>
+<summary>Answer 3/5</summary>
+Based on the RDF/Turtle model provided, there is no direct connection between "UK" and "US". They are simply values of the property vcard:country-name associated with two different individuals, :anne and :bob, respectively, who are members of different organizations, :researchDep and :marketingDep, respectively, within the overall organization :wonderOrg. The model does not specify any direct relationship or connection between "UK" and "US" beyond this context.
+</details>
+
+<details>
+<summary>Answer 4/5</summary>
+Yes, there is a connection between "UK" and "US" in the given RDF/Turtle model. Specifically, the connection is established through the vcard:country-name property that is associated with the vcard:hasAddress property of the individuals :anne and :bob.
+
+:anne is a member of the :researchDep organizational unit and holds the role of :chiefResearchOfficer in the :wonderOrg organization. The vcard:country-name property associated with the vcard:hasAddress property of :anne indicates that the country associated with her home address is "UK", which stands for the United Kingdom.
+
+Similarly, :bob is a member of the :marketingDep organizational unit and holds the role of :marketingManager in the :wonderOrg organization. The vcard:country-name property associated with the vcard:hasAddress property of :bob indicates that the country associated with his home address is "US", which stands for the United States.
+</details>
+
+
+<details>
+<summary>Answer 5/5</summary>
+Yes, there is a connection between "UK" and "US" in the RDF/Turtle model. The connection is through the vcard:hasAddress property, which associates the individuals :anne and :bob with their respective addresses. :anne has an address in the "UK" and :bob has an address in the "US".
+</details>
+
+### ChatGPT 4 Mar 23 Version
+
+<details>
+<summary>Answer 1/5: &check; Correct summarization that both people are member of the same organization.</summary>
+No, there is no direct connection between "UK" and "US" in the given RDF/Turtle model. "UK" and "US" are values of the vcard:country-name property, which are assigned to two different individuals, Anne and Bob, respectively. The individuals are members of different organizational units, the research department and the marketing department, respectively, which are both part of the same organization, wonderOrg. However, there is no explicit connection between the two individuals or their respective countries in this model.
+</details>
+
+<details>
+<summary>Answer 2/5: &cross;</summary>
+Based on the RDF/Turtle model provided, there is no direct connection between "UK" and "US".
+
+The model defines two people, Anne and Bob, each with a home address in their respective countries. The model also defines an organization named "wonderOrg" with two departments, a research department and a marketing department. Additionally, the model defines two roles within the organization, a chief research officer and a marketing manager, and assigns Anne and Bob to those roles within their respective departments.
+
+Therefore, there is no explicit or implicit connection between the two countries, UK and US, in this RDF/Turtle model.
+</details>
+
+<details>
+<summary>Answer 3/5: &cross;</summary>
+No, there is no direct connection between "UK" and "US" in the RDF/Turtle model. The only connection between the two is that Anne lives in the UK and Bob lives in the US, but there is no explicit relationship between them or their respective countries in the model.
+</details>
+
+
+<details>
+<summary>Answer 4/5: &cross;</summary>
+There is no direct connection between "UK" and "US" in the RDF/Turtle model provided. However, there is an implicit connection between "UK" and "Anne Miller" through the vcard:hasAddress property. Similarly, there is an implicit connection between "US" and "Bob Tanner" through the vcard:hasAddress property.
+</details>
+
+<details>
+<summary>Answer 5/5: &cross; Failed to relate the departments to the same organization.</summary>
+Based on the provided RDF/Turtle model, there is no direct connection between "UK" and "US". However, it is possible that there could be an indirect connection between the two through the organization or role memberships.
+
+Anne is a member of the research department and holds the role of Chief Research Officer. Bob is a member of the marketing department and holds the role of Marketing Manager. It is possible that these two departments could have some connection or interaction with each other, which could lead to a connection between UK and US. However, without further information, it is not possible to determine whether there is any such connection between UK and US.
+</details>
+
+
+## Task 2
 
 <details>
 <summary>
