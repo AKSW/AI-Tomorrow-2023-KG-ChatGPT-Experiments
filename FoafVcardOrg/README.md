@@ -11,9 +11,8 @@ The final file has been manually formatted.
 ## Task 1A: Connection Explanation
 
 <details>
-<summary>
-Given the RDF/Turtle model below, is there any connection between "UK" and "US"?
-</summary>
+<summary>Given the RDF/Turtle model below, is there any connection between "UK" and "US"?</summary>
+
 ```turtle
 PREFIX : <https://abc.def/ghi/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -40,6 +39,7 @@ PREFIX org: <http://www.w3.org/ns/org#>
 [ a org:Membership ; org:member :bob  ; org:organization :marketingDep ;
   org:role :marketingManager ] .
 ```
+
 </details>
 
 **Note: An answer is considered only correct if it mentions that the people are part of the same organization :wonderOrg.**
