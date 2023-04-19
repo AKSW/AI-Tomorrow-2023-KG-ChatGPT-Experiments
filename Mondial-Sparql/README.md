@@ -31,6 +31,7 @@ LIMIT 1
 | river | count |
 | ------|-------|
 | `<http://www.semwebtech.org/mondial/10/rivers/Donau/>` | `"10"^^<http://www.w3.org/2001/XMLSchema#integer>` |
+
 checked with https://www.semwebtech.org/mondial/10/sparql
 
 </details>
@@ -99,7 +100,7 @@ LIMIT 1
 
 #### comments on 2/5
 * &check; syntax correct
-* &check; good query structure
+* &check; plausible query structure
 * &cross; wrong mondial namespace, correct would be http://www.semwebtech.org/mondial/10/meta#
 * &cross; wrong usage of property `mondial:flowsThrough` (country does not fit to range `mondial:Lake`, better would be `mondial:locatedIn`
 * &check; usage of defined properties & classes
@@ -191,7 +192,7 @@ LIMIT 1
 
 #### comments for 5/5
 * &check; syntax correct
-* &check; good query structure, but duplicate connection between `?river` and `?country`
+* &check; plausible query structure, but duplicate connection between `?river` and `?country`
 * &cross; wrong mondial namespace, correct would be http://www.semwebtech.org/mondial/10/meta#
 * &cross; wrong usage of property `mondial:flowsThrough` (country does not fit to range `mondial:Lake`, better would be `mondial:locatedIn`
 * &cross; undefined property used: `mondial:isRiparian` is not defined
@@ -227,7 +228,7 @@ LIMIT 1
 
 #### comments for 1/5
 * &check; syntax correct
-* &check; good query structure, but prefix `xsd` never used
+* &check; plausible query structure, but prefix `xsd` never used
 * &check; correct mondial namespace
 * &cross; wrong usage of property `rdfs:label` for river, mondial uses (untypically) `mondial:name`
 * &cross; undefined class used: `mondial:State` is not defined
@@ -285,7 +286,7 @@ LIMIT 1
 
 #### comments for 3/5
 * &check; syntax correct
-* &check; good query structure, type of `?state` not defined
+* &check; plausible query structure, type of `?state` not defined
 * &cross; wrong mondial namespace, correct would be http://www.semwebtech.org/mondial/10/meta#
 * &cross; wrong usage of property `rdfs:label` for river, mondial uses (untypically) `mondial:name`
 * &check; usage of defined properties & classes
@@ -312,7 +313,7 @@ LIMIT 1
 
 #### comments for 4/5
 * &check; syntax correct
-* &check; good query structure, but prefix `geo` never used
+* &check; plausible query structure, but prefix `geo` never used
 * &cross; wrong mondial namespace, correct would be http://www.semwebtech.org/mondial/10/meta#
 * &cross; wrong usage of property `mondial:flowsThrough` (country does not fit to range `mondial:Lake`, better would be `mondial:locatedIn`
 * &check; usage of defined properties & classes
@@ -342,7 +343,7 @@ LIMIT 1
 
 #### comments for 5/5
 * &check; syntax correct
-* &check; good query structure, but prefix `xsd` never used
+* &check; plausible query structure, but prefix `xsd` never used
 * &cross; wrong mondial namespace, correct would be http://www.semwebtech.org/mondial/10/meta#
 * &cross; wrong usage of property `mondial:flowsThrough` (country does not fit to range `mondial:Lake`, better would be `mondial:locatedIn`
 * &check; usage of defined properties & classes
