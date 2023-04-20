@@ -1,4 +1,4 @@
-# Question 2 - Classes and concepts of DBpedia focussing on rdfs:domain and rdfs:range
+# Prompt 7 - Classes and concepts of DBpedia focussing on domain and range
 
 > We: Can you give me a visualization of the most common concepts of the dbpedia ontology and their connections focussing on domain and range defined in properties?
 

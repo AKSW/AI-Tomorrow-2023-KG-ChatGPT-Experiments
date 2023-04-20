@@ -1,4 +1,6 @@
-> We: Can vou create me a vizualization showing the most important classes and concepts and how they are linkes for dbpedia ontology serialized for mermaid?
+# Prompt 6 - Overview DBpedia by mermaid visualization
+
+> We: Can vou create me a visualization showing the most important classes and concepts and how they are linked for dbpedia ontology serialized for mermaid?
 
 > ChatGPT Sure! Here's an example visualization of the most important classes and concepts in the DBpedia ontology, serialized for Mermaid:
 
