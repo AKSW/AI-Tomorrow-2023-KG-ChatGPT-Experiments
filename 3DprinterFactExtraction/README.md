@@ -987,6 +987,126 @@ NEW PAGE
 
 </details>
 
+<details>
+<summary>Answer 5: &cross; interrupted data</summary>
+
+```{
+  "@context": "http://schema.org/",
+  "@type": "Printer",
+  "name": "Industry F340",
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "3DGence"
+  },
+  "printTechnology": [
+    "FFF"
+  ],
+  "buildVolume": {
+    "@type": "Dimensions",
+    "width": "260mm",
+    "height": "300mm",
+    "depth": "340mm",
+    "volume": "26,520cm³"
+  },
+  "minLayerHeight": "40μm",
+  "printhead": {
+    "@type": "Printhead",
+    "count": 2,
+    "nozzleDiameter": [
+      "0.4mm",
+      "0.4mm",
+      "0.6mm",
+      "0.6mm"
+    ],
+    "filamentDiameter": "1.75mm"
+  },
+  "temperature": {
+    "@type": "Temperature",
+    "workingTemperature": "15-32°C",
+    "chamberTemperature": "85°C (active heating)",
+    "filamentChamberTemperature": "70°C",
+    "printheadTemperature": "500°C",
+    "buildPlateTemperature": "160°C"
+  },
+  "power": {
+    "@type": "Power",
+    "powerRequirements": "230V AC",
+    "maxPowerDraw": "2700W"
+  },
+  "communication": [
+    "USB drive",
+    "SD card"
+  ],
+  "dimensionsAndMass": {
+    "@type": "DimensionsAndMass",
+    "externalDimensions": {
+      "@type": "Dimensions",
+      "width": "1200mm",
+      "height": "800mm",
+      "depth": "1100mm"
+    },
+    "mass": "200kg"
+  },
+  "slicingSoftware": "3DGence SLICER 4.0",
+  "filtration": "filtration unit",
+  "chassis": "powder coated steel",
+  "upsDevice": "yes, optional",
+  "buildSurface": "heated ceramic plate",
+  "positioningResolution": {
+    "@type": "PositioningResolution",
+    "XY": "0.006mm",
+    "Z": "0.0004mm"
+  },
+  "materials": [
+    {
+      "@type": "Material",
+      "name": "PRO",
+      "temperature": "up to 265°C",
+      "nozzleDiameter": "0.4mm/0.4mm",
+      "modelMaterial": [
+        "ABS",
+        "PLA",
+        "PA",
+        "ASA",
+        "PP",
+        "TPU"
+      ],
+      "supportMaterial": [
+        "ESM-10",
+        "HIPS",
+        "BVOH"
+      ]
+    },
+    {
+      "@type": "Material",
+      "name": "HF",
+      "temperature": "up to 265°C",
+      "nozzleDiameter": "0.6mm/0.6mm",
+      "modelMaterial": [
+        "ABS",
+        "ASA",
+        "PA-CF",
+        "PA-GF",
+        "PA",
+        "PP"
+      ],
+      "supportMaterial": [
+        "ESM-10",
+        "HIPS"
+      ]
+    },
+    {
+      "@type": "Material",
+      "name": "HT",
+      "temperature": "up to 340°C",
+      "nozzleDiameter": "0
+
+```
+
+
+</details>
+
+
 
 
 ### GPT-3.5 turbo playground 
@@ -1286,5 +1406,8 @@ Here's the updated JSON_LD formatted Knowledge Graph with the missing informatio
 
 
 </details>
+
+
+
 
 
